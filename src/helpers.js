@@ -28,4 +28,15 @@ export function normaliseLog(log) {
 
 export function groupByUser(logs) {
   // return an object keyed by username
+  const groups = {}
+
+  for (let i = 0; i < logs.length; i++) {
+    const log = logs[i]
+    const user = log.user
+    if (!groups[user]) {
+      groups[user] = [],
+    }
+    groups[user].push(log)
+  }
+  return groups
 }

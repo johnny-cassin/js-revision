@@ -17,6 +17,8 @@ export function processActivityLogs(logs) {
   }
 
   // Step 3: group by user
+  const grouped = groupByUser(normalisedLogs)
+
   // Step 4: calculate per-user stats
   // Step 5: calculate global stats
   // Step 6: generate insights
