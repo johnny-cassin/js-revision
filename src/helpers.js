@@ -3,10 +3,27 @@
 
 export function isValidLog(log) {
   // return true or false
+  if (typeof log.user === 'string') return false
+  if (log.user.trim() === ' ') return false
+  if (typeof log.time === 'number') return false
+  if (log.time < 0) return false
+  if (
+    log.action !== 'click' &&
+    log.action !== 'login' &&
+    log.action !== 'logout'
+  ) {
+    return false
+  }
+  return true
 }
 
 export function normaliseLog(log) {
   // return a new, cleaned log object
+  return {
+    user: log.user.toLowerCase(),
+    action: log.action,
+    time: log.time,
+  }
 }
 
 export function groupByUser(logs) {
